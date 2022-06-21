@@ -38,5 +38,23 @@ json_data.forEach(element => {
     listItem.appendChild(
         document.createTextNode(element.title)
       );
-      myList.appendChild(listItem);
-});
+      const deleteLink = document.createElement("a");
+
+        deleteLink.href="#";
+        deleteLink.className = "btn btn-sm btn-danger m-1 delete";
+        deleteLink.appendChild(
+            document.createTextNode("Delete")
+        );
+        listItem.appendChild(deleteLink);
+        myList.appendChild(listItem);
+        });
+
+        let closeButtons = document.getElementsByClassName("delete");
+        for(let i = 0; i < closeButtons.length; i++) {
+            closeButtons[i].addEventListener('click', deleteTodo, false);
+        }
+
+        function deleteTodo() {
+            let li = this.parentElement;
+            myList.removeChild(li);
+        }
